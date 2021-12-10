@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import Begin from './components/Begin'
+import FlashCard from './components/FlashCard';
+import { useState } from 'react'  
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+
+  const [screen, setScreen] = useState('Begin');
+
+  function toFlashCard(){ setScreen('FlashCard')}
+  function toBegin(){ setScreen('Begin')}
+
+  // function changeScreen(screen){
+  //   setScreen(screen);
+  // }
+
+  let screenNow;
+  if(screen === 'Begin') screenNow =  <Begin toFlashCard={toFlashCard}/>
+  if(screen === 'FlashCard') screenNow =  <FlashCard toBegin={toBegin}/>
+
+  return screenNow;
 }
 
-export default App;
+
+
