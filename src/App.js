@@ -1,6 +1,7 @@
 import Begin from './components/Begin'
-import FlashCard from './components/FlashCard';
+import FlashCard from './components/FlashCard'
 import { useState } from 'react'  
+import {deck} from './assets/deck.js'
 
 export default function App() {
 
@@ -9,13 +10,9 @@ export default function App() {
   function toFlashCard(){ setScreen('FlashCard')}
   function toBegin(){ setScreen('Begin')}
 
-  // function changeScreen(screen){
-  //   setScreen(screen);
-  // }
-
   let screenNow;
   if(screen === 'Begin') screenNow =  <Begin toFlashCard={toFlashCard}/>
-  if(screen === 'FlashCard') screenNow =  <FlashCard toBegin={toBegin}/>
+  if(screen === 'FlashCard') screenNow =  <FlashCard deck={deck} toBegin={toBegin}/>
 
   return screenNow;
 }
